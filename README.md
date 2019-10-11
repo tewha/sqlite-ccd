@@ -3,15 +3,27 @@ SQLite functions for various CommonDigest hashes.
 
 To use these, you'll have to build a sqlite3 shell from source as the version of sqlite3 included with macOS X lacks the `.load` command.
 
-After that, you can build the hash library using this command:
+After that, you must build the hash library.
+
+## On the command line
+
+Use this command:
 
     gcc -g -fPIC -dynamiclib ccd.c -o ccd.dylib
 
-Using your sqlite3 executable, you can load it:
+Using your sqlite3 shell, you can load it:
 
     .load ccd.dylib
 
 `ccd.dylib` above should be the path to the dynamic library, if it's not in the current directory.
+
+## In Xcode
+
+1. Open ccd.xcodeproj.
+2. Build.
+3. Find the output and use `.load` as above (with the correct path).
+
+## Use in sqlite3 shell
 
 Then:
 
