@@ -5,13 +5,13 @@ To use these, you'll have to build a sqlite3 shell from source as the version of
 
 After that, you can build the hash library using this command:
 
-    gcc -g -fPIC -dynamiclib hash.c -o hash.dylib
+    gcc -g -fPIC -dynamiclib ccd.c -o ccd.dylib
 
 Using your sqlite3 executable, you can load it:
 
-    .load hash.dylib
+    .load ccd.dylib
 
-`hash.dylib` above should be the path to the hash dynamic library, if it's not in the current directory.
+`ccd.dylib` above should be the path to the dynamic library, if it's not in the current directory.
 
 Then:
 
@@ -26,4 +26,4 @@ Available hashes:
 * sha256
 * sha512
 
-More functions are implemented inside hash.c; to enable them, uncomment the relevant `sqlite3_create_function_v2` lines and rebuild.
+More functions are implemented inside ccd.c; to enable them, uncomment the relevant `sqlite3_create_function_v2` lines and rebuild.
