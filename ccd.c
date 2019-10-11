@@ -35,10 +35,13 @@ UCHAR *md2(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
     size_t bytesRead;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD2_CTX ctx;
     CC_MD2_Init(&ctx);
     CC_MD2_Update(&ctx, in, strlen((const CHAR *)in));
     CC_MD2_Final((UCHAR *)digest, &ctx);
+#pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
     UCHAR *temp = string;
@@ -54,10 +57,13 @@ UCHAR *md4(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
     size_t bytesRead;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD4_CTX ctx;
     CC_MD4_Init(&ctx);
     CC_MD4_Update(&ctx, in, strlen((const CHAR *)in));
     CC_MD4_Final((UCHAR *)digest, &ctx);
+#pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
     UCHAR *temp = string;
@@ -73,10 +79,13 @@ UCHAR *md5(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
     size_t bytesRead;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD5_CTX ctx;
     CC_MD5_Init(&ctx);
     CC_MD5_Update(&ctx, in, strlen((const CHAR *)in));
     CC_MD5_Final((UCHAR *)digest, &ctx);
+#pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
     UCHAR *temp = string;
