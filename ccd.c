@@ -14,7 +14,7 @@ typedef UCHAR * (*hash_function_t)(const UCHAR *in);
 
 static char hex[] = "0123456789abcdef";
 
-static inline digit(unsigned char b, UCHAR **dest) {
+static inline void digit(unsigned char b, UCHAR **dest) {
     assert(b<=15);
     **dest = hex[b];
     *dest += 1;
