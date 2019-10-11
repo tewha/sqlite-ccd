@@ -1,3 +1,4 @@
 *.dylib
 *.dSYM
 .DS_Store
+xcuserdata
