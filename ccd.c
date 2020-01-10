@@ -34,12 +34,11 @@ void xStep(sqlite3_context *context, int argCount, sqlite3_value **args) {
 UCHAR *md2(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD2_CTX ctx;
     CC_MD2_Init(&ctx);
-    CC_MD2_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_MD2_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_MD2_Final((UCHAR *)digest, &ctx);
 #pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
@@ -56,12 +55,11 @@ UCHAR *md2(const UCHAR *in) {
 UCHAR *md4(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD4_CTX ctx;
     CC_MD4_Init(&ctx);
-    CC_MD4_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_MD4_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_MD4_Final((UCHAR *)digest, &ctx);
 #pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
@@ -78,12 +76,11 @@ UCHAR *md4(const UCHAR *in) {
 UCHAR *md5(const UCHAR *in) {
     size_t digestSize = CC_MD5_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD5_CTX ctx;
     CC_MD5_Init(&ctx);
-    CC_MD5_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_MD5_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_MD5_Final((UCHAR *)digest, &ctx);
 #pragma clang diagnostic pop
     size_t strSize = (digestSize * 2) + 1;
@@ -100,10 +97,9 @@ UCHAR *md5(const UCHAR *in) {
 UCHAR *sha1(const UCHAR *in) {
     size_t digestSize = CC_SHA1_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
     CC_SHA1_CTX ctx;
     CC_SHA1_Init(&ctx);
-    CC_SHA1_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_SHA1_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_SHA1_Final((UCHAR *)digest, &ctx);
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
@@ -119,10 +115,9 @@ UCHAR *sha1(const UCHAR *in) {
 UCHAR *sha224(const UCHAR *in) {
     size_t digestSize = CC_SHA224_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
     CC_SHA256_CTX ctx;
     CC_SHA224_Init(&ctx);
-    CC_SHA224_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_SHA224_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_SHA224_Final((UCHAR *)digest, &ctx);
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
@@ -138,10 +133,9 @@ UCHAR *sha224(const UCHAR *in) {
 UCHAR *sha256(const UCHAR *in) {
     size_t digestSize = CC_SHA256_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
     CC_SHA256_CTX ctx;
     CC_SHA256_Init(&ctx);
-    CC_SHA256_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_SHA256_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_SHA256_Final((UCHAR *)digest, &ctx);
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
@@ -157,10 +151,9 @@ UCHAR *sha256(const UCHAR *in) {
 UCHAR *sha384(const UCHAR *in) {
     size_t digestSize = CC_SHA384_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
     CC_SHA512_CTX ctx;
     CC_SHA384_Init(&ctx);
-    CC_SHA384_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_SHA384_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_SHA384_Final((UCHAR *)digest, &ctx);
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
@@ -176,10 +169,9 @@ UCHAR *sha384(const UCHAR *in) {
 UCHAR *sha512(const UCHAR *in) {
     size_t digestSize = CC_SHA512_DIGEST_LENGTH;
     UCHAR *digest = sqlite3_malloc(digestSize);
-    size_t bytesRead;
     CC_SHA512_CTX ctx;
     CC_SHA512_Init(&ctx);
-    CC_SHA512_Update(&ctx, in, strlen((const CHAR *)in));
+    CC_SHA512_Update(&ctx, in, (CC_LONG)strlen((const CHAR *)in));
     CC_SHA512_Final((UCHAR *)digest, &ctx);
     size_t strSize = (digestSize * 2) + 1;
     UCHAR *string = sqlite3_malloc(strSize);
